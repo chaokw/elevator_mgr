@@ -895,8 +895,6 @@ void PostData2Server(void)
                 sleep_with_restart(php->clock);
                 memset(recv_buffer, 0, MAX_RECV_BUFF);
 
-		//printf("onenet********************************************\r\n");
-
                 /****** DFMZ PLATFORM ******/
                 curl_easy_setopt(curl, CURLOPT_URL, DFMZ_PLATFORM_URI);
                 curl_easy_setopt(curl, CURLOPT_PORT, 15329);
