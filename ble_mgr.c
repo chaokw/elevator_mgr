@@ -20,9 +20,7 @@
 
 extern char *optarg;
 extern int optind, opterr, optopt;
-
 extern void *BLEProcThread( UNUSED_ARG void *ptr );
-
 
 /*********************************************************
  * BLEMgmt Controller task context
