@@ -23,8 +23,6 @@
 
 
 #define  RS485DATAFILE        "/var/rs485_data"
-
-
 #define setbit(x,y)  x|=(1<<y)
 #define h_assert(res)   \
 if(res)\
@@ -144,7 +142,6 @@ int chk3GStatus()
                         ret = WANDOWN;
                 }
         }
-
         return ret;
 }
 
@@ -287,7 +284,6 @@ unsigned char checksum_8(unsigned char *pData, unsigned char len)
 	for (i=0; i < len; i++) {
 		sum += pData[i];
 	}
-	
 	return sum;
 }  
 
@@ -382,7 +378,7 @@ CHKSUM: dev_AS_buf.data[dev_AS_buf.len] = checksum_8((unsigned char *)&dev_AS_bu
 	  }
 	  else if (strcmp("Fault",type->valuestring) == 0) {
 	 	stype = cJSON_GetObjectItem(root,"stype");
-        if(stype != NULL) {
+	  if(stype != NULL) {
      		if (strcmp("add",stype->valuestring) == 0) {
      		 	dev_AS_buf.sop = 0xFE;
      			dev_AS_buf.len = 0x0A;
