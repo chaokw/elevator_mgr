@@ -57,7 +57,6 @@ typedef struct CommonRspHdrT
 } CommonRspHdrT;
 #endif
 
-
 typedef struct {
     unsigned char sop;
     unsigned char len;
@@ -66,7 +65,6 @@ typedef struct {
     unsigned char cmd;
     unsigned char data[256];
 }dev_AS_cmd_t;
-
 
 typedef struct {
     int direction;
@@ -77,7 +75,6 @@ typedef struct {
     float speed;
 }elevator_status_t;
 
-
 typedef struct
 {
     char dev_id[32];
@@ -85,7 +82,6 @@ typedef struct
     int seq;
     char data[256];
 }elevator_info_t;
-
 
 typedef struct _t_http_post{
     unsigned int clock;
