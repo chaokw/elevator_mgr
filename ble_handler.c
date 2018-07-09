@@ -848,13 +848,13 @@ void PostData2Server(void)
     memset(recv_buffer, 0, MAX_RECV_BUFF);
     
     php = (http_post *)calloc(1, sizeof(http_post));
-    php->clock = 5; //chaokw
+    php->clock = 5;
 
     curl_global_init(CURL_GLOBAL_DEFAULT);
     curl = curl_easy_init();
     if(curl) {      
         chunk = curl_slist_append(NULL,"Content-Type:application/json;charset=UTF-8");
-        chunk = curl_slist_append(chunk,"api-key: xstv2FIguE=eSZwSkYCXDdOWavw=");   
+        //chunk = curl_slist_append(chunk,"api-key: xstv2FIguE=eSZwSkYCXDdOWavw=");   
         res = curl_easy_setopt(curl, CURLOPT_HTTPHEADER, chunk);
         h_assert(res);
 
@@ -923,10 +923,12 @@ void PostData2Server(void)
                 }
 #endif
 
+#if 0
                 /****** ONENET PLATFORM ******/
                 curl_easy_setopt(curl, CURLOPT_URL, ONENET_PLATFORM_URI);
                 curl_easy_setopt(curl, CURLOPT_PORT, 80);
                 post_data_2(curl, send_buffer, ONENET_JSON_FMT, MAX_SEND_BUFF, recv_buffer);
+#endif
 
                 if (dev_AS_buf.sop == DEVSOP) 
                   data_sequence++;
