@@ -426,14 +426,14 @@ CHKSUM: dev_AS_buf.data[dev_AS_buf.len] = checksum_8((unsigned char *)&dev_AS_bu
 
 int data2file(char *file, char *jsonBody)
 {
-	char buf[256];
-	time_t timep;
+    char buf[256];
+    time_t timep;
 	
     FILE *fd = fopen(file,"w+");
     if(!fd) return -1;
     time (&timep);
 	
-	sprintf(buf, "%s-->%s", ctime(&timep), jsonBody);
+    sprintf(buf, "%s-->%s", ctime(&timep), jsonBody);
     fwrite(buf, strlen(buf),1,fd);
     fclose(fd);
     return 0;
@@ -461,12 +461,11 @@ int rs485_push_buff(unsigned char uartDat)
 			printf("\n");
 		}
 
-        //LedCtrl(GPIO_PHONELED, GPIO_LEDON);
-        gpioLedSet(GPIO_PHONELED,0,1,0,1,1);
+		//LedCtrl(GPIO_PHONELED, GPIO_LEDON);
+		gpioLedSet(GPIO_PHONELED,0,1,0,1,1);
 		data2file(RS485DATAFILE, rs485_json_data);
 		json_data_parse(rs485_json_data);
-        //LedCtrl(GPIO_PHONELED, GPIO_LEDOFF);
-
+		//LedCtrl(GPIO_PHONELED, GPIO_LEDOFF);
 		count = 0;
 		memset(uartBuf, 0, sizeof(uartBuf));
 	    }
@@ -946,6 +945,3 @@ END:
     curl_global_cleanup();
     return;
 }
-
-
-
