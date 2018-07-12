@@ -221,7 +221,7 @@ static void UartInit(char *device)
 
     FD_ZERO(&localmask);
     FD_SET(gpBLEMgmtTaskCtx->uart.fd, &localmask);
-    //FD_SET(fileno(stdin), &localmask);    //chaokw
+    //FD_SET(fileno(stdin), &localmask);
 	
     gpBLEMgmtTaskCtx->uart.mask =  localmask;
 
@@ -270,7 +270,7 @@ static void localShutdown ( UNUSED_ARG int sig )
     gpBLEMgmtTaskCtx->running = FALSE;
     //MsgQPendCancel(&gpBLEMgmtTaskCtx->msgq); 
 	
-    exit(0);  //chaokw
+    exit(0);
 }
 
 
@@ -292,7 +292,7 @@ S32 main(S32 argc, char *argv[])
     pthread_t   BLEProcThreadCtx;
 
     /* Set up signal handlers for catching ctrl-c */
-#if 1   //chaokw
+#if 1
     signal(SIGTERM, localShutdown);
     signal(SIGQUIT, localShutdown);
     signal(SIGINT,  localShutdown);
@@ -333,7 +333,7 @@ S32 main(S32 argc, char *argv[])
     pthread_create( &BLEProcThreadCtx, NULL, BLEProcThread, NULL);
     		
     /* Enter the main task loop to do other things*/
-    //BLEMgmtMain();     //chaokw
+    //BLEMgmtMain();
     PostData2Server();
 
     /* No need to cancel this thread as it will exit on it's own. */
